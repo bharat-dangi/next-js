@@ -1,0 +1,33 @@
+.headerStyle {
+  background-color: "#007bff";
+  color: "white";
+  padding: "1rem";
+  width: "100%";
+  text-align: "center";
+}
+
+.linkStyle {
+  font-size: "1.5rem";
+  font-weight: "bold";
+  text-decoration: "none";
+  color: "white";
+  transition: "text-decoration 0.3s";
+}
+
+.linkHoverStyle {
+  text-decoration: "underline";
+}
+
+.mainStyle {
+  flex-grow: 1;
+  padding: "1rem";
+  display: "flex";
+  flex-direction: "column";
+  align-items: "center";
+  justify-content: "center";
+}
+
+.textStyle {
+  font-size: "1.5rem";
+  text-align: "center";
+}

@@ -1,0 +1,49 @@
+/* Reset some default styles and center the form */
+.addressFormContainer {
+  max-width: 300px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Style the form container */
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+/* Style form labels */
+.formLabel {
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+/* Style form inputs */
+.formInput {
+  padding: 10px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 5px 0;
+  transition: border 0.3s;
+}
+
+.formInput:focus {
+  border: 1px solid #007bff;
+}
+
+/* Style the submit button */
+.submitButton {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submitButton:hover {
+  background-color: #0056b3;
+}
