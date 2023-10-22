@@ -1,8 +1,7 @@
-// "use client";
 import { useState } from "react";
 import styles from "./address.module.css";
 import { CHECK_ADDRESS } from "../api/query";
-import { useLazyQuery, useQuery } from "@apollo/client";
+import { useLazyQuery } from "@apollo/client";
 import { client } from "../api/graphql.client";
 
 export default function AddressForm() {
@@ -12,13 +11,12 @@ export default function AddressForm() {
   const [message, setMessage] = useState<string>("");
   const [errorMessage, setErrorMessage] = useState<string>("");
 
-  const [checkAddress, { loading, error, data }] = useLazyQuery(CHECK_ADDRESS);
-  console.log("Dataaa", data);
-  // notifyOnNetworkStatusChange: true,
-  // onCompleted: (data) => {
-  //   console.log("Dataaa", data);
-  //   setMessage(data?.checkAddress?.message);
-  // },
+  const [checkAddress, { loading }] = useLazyQuery(CHECK_ADDRESS, {
+    notifyOnNetworkStatusChange: true,
+    onCompleted: (data) => {
+      setMessage(data?.checkAddress?.message);
+    },
+  });
 
   return (
     <div className={styles.addressFormContainer}>
@@ -55,6 +53,7 @@ export default function AddressForm() {
         )}
 
         {message !== "" && <h3 style={{ color: "green" }}>{message}</h3>}
+        {loading && <div className={styles.loader}></div>}
         <button
           type="button"
           className={styles.submitButton}
@@ -64,6 +63,7 @@ export default function AddressForm() {
               setErrorMessage("All fields are required.");
               return;
             }
+            setErrorMessage("");
             checkAddress({
               client: client,
               variables: {
