@@ -3,18 +3,32 @@ import styles from "./address.module.css";
 import { CHECK_ADDRESS } from "../api/query";
 import { useLazyQuery } from "@apollo/client";
 import { client } from "../api/graphql.client";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function AddressForm() {
   const [postcode, setPostcode] = useState<string>("");
   const [suburb, setSuburb] = useState<string>("");
   const [state, setState] = useState<string>("");
-  const [message, setMessage] = useState<string>("");
-  const [errorMessage, setErrorMessage] = useState<string>("");
 
   const [checkAddress, { loading }] = useLazyQuery(CHECK_ADDRESS, {
     notifyOnNetworkStatusChange: true,
     onCompleted: (data) => {
-      setMessage(data?.checkAddress?.message);
+      if (!data?.checkAddress?.message) {
+        toast.error("Something went wrong", {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+        return;
+      }
+
+      toast.success(data?.checkAddress?.message, {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+    },
+    onError: (error) => {
+      toast.error(error?.message, {
+        position: toast.POSITION.TOP_RIGHT,
+      });
     },
   });
 
@@ -48,22 +62,20 @@ export default function AddressForm() {
             className={styles.formInput}
           />
         </label>
-        {errorMessage !== "" && (
-          <h3 style={{ color: "red" }}>{errorMessage}</h3>
-        )}
 
-        {message !== "" && <h3 style={{ color: "green" }}>{message}</h3>}
         {loading && <div className={styles.loader}></div>}
+
         <button
           type="button"
           className={styles.submitButton}
           onClick={(e) => {
             e.preventDefault();
             if (!postcode || !suburb || !state) {
-              setErrorMessage("All fields are required.");
+              toast.error("All fields are required.", {
+                position: toast.POSITION.TOP_RIGHT,
+              });
               return;
             }
-            setErrorMessage("");
             checkAddress({
               client: client,
               variables: {
@@ -76,6 +88,7 @@ export default function AddressForm() {
         >
           Submit
         </button>
+        <ToastContainer />
       </div>
     </div>
   );

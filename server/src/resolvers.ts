@@ -30,9 +30,10 @@ const checkAddress = async (addressData: Address): Promise<Response> => {
         state: addressData?.state,
       },
     });
+
     return { message: checkAddressValidity(apiResponse?.data, addressData) };
   } catch (error) {
-    return { message: "Something went wrong" };
+    throw new Error("Something went wrong");
   }
 };
 
