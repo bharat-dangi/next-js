@@ -4,7 +4,7 @@ import { checkAddressValidity } from "./utility";
 export type Address = {
   postalCode: string;
   suburb: string;
-  state: number;
+  state: string;
 };
 
 type Response = {
