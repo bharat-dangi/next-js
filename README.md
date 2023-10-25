@@ -14,7 +14,7 @@ PORT= <PORT_NUMBER>
 * Then switch to node version 16 and run `npm i`
 * Then run command `npm run start:dev`
 
-# To run unit tests
+### To run unit tests
 * You need to run command `npm run test-unit` under server directory.
 
 ## Client
