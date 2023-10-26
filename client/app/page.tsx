@@ -2,7 +2,7 @@
 import React from "react";
 import { ApolloProvider } from "@apollo/client";
 import { client } from "./api/graphql.client";
-import AddressForm from "./address/page";
+import AddressForm from "./components/address";
 
 const Home: React.FC = () => {
   return (
