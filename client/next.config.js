@@ -1,8 +1,4 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  onError: {
-    404: "./app/not-found.tsx",
-  },
-};
+const nextConfig = {};
 
 module.exports = nextConfig;
