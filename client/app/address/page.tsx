@@ -33,63 +33,76 @@ export default function AddressForm() {
   });
 
   return (
-    <div className={styles.addressFormContainer}>
-      <div className={styles.form}>
-        <label className={styles.formLabel}>
-          Postal Code:
-          <input
-            type="text"
-            value={postcode}
-            onChange={(e) => setPostcode(e.target.value)}
-            className={styles.formInput}
-          />
-        </label>
-        <label className={styles.formLabel}>
-          Suburb:
-          <input
-            type="text"
-            value={suburb}
-            onChange={(e) => setSuburb(e.target.value)}
-            className={styles.formInput}
-          />
-        </label>
-        <label className={styles.formLabel}>
-          State:
-          <input
-            type="text"
-            value={state}
-            onChange={(e) => setState(e.target.value)}
-            className={styles.formInput}
-          />
-        </label>
+    <div className={styles.mainWrapper}>
+      <section className={styles.container}>
+        <header>Address Form</header>
+        <form className={styles.form}>
+          <div className={styles.input_wrapper}>
+            <label>Postal Code</label>
+            <input
+              type="text"
+              value={postcode}
+              onChange={(e) => setPostcode(e.target.value)}
+              placeholder="Enter postcode"
+            />
+          </div>
+          <div className={styles.input_wrapper}>
+            <label>Suburb</label>
+            <input
+              type="text"
+              value={suburb}
+              onChange={(e) => setSuburb(e.target.value)}
+              placeholder="Enter Suburb"
+            />
+          </div>
+          <div className={styles.input_wrapper}>
+            <label> State</label>
+            <input
+              type="text"
+              value={state}
+              onChange={(e) => setState(e.target.value)}
+              placeholder="Enter State"
+            />
+          </div>
 
-        {loading && <div className={styles.loader}></div>}
-
-        <button
-          type="button"
-          className={styles.submitButton}
-          onClick={(e) => {
-            e.preventDefault();
-            if (!postcode || !suburb || !state) {
-              toast.error("All fields are required.", {
-                position: toast.POSITION.TOP_RIGHT,
+          {loading && <div className={styles.loader}></div>}
+          <button
+            type="button"
+            className={styles.submitButton}
+            onClick={(e) => {
+              e.preventDefault();
+              if (!postcode || !suburb || !state) {
+                toast.error("All fields are required.");
+                return;
+              }
+              checkAddress({
+                client: client,
+                variables: {
+                  postalCode: postcode,
+                  suburb,
+                  state,
+                },
               });
-              return;
-            }
-            checkAddress({
-              client: client,
-              variables: {
-                postalCode: postcode,
-                suburb,
-                state,
-              },
-            });
-          }}
-        >
-          Submit
-        </button>
-        <ToastContainer />
-      </div>
+            }}
+          >
+            Submit
+          </button>
+
+          <button
+            type="button"
+            className={styles.clearButton}
+            onClick={(e) => {
+              e.preventDefault();
+              setPostcode("");
+              setState("");
+              setSuburb("");
+            }}
+          >
+            Clear
+          </button>
+        </form>
+      </section>
+      <ToastContainer />
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import { Address } from "./resolvers";
 
+// Check if given data are valid or not
 export const checkAddressValidity = (
   rawData: any,
   addressData: Address

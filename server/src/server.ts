@@ -8,8 +8,9 @@ dotenv.config();
 
 const server = express();
 
-// setup graphql
 server.use(cors());
+
+// setup graphql
 server.use(
   "/graphql",
   graphqlHTTP({

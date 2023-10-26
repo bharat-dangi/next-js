@@ -1,31 +1,56 @@
-.addressFormContainer {
-  max-width: 300px;
-  margin: 0 auto;
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700&display=swap");
+
+.mainWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  font-family: "Poppins", sans-serif;
+}
+.container {
+  max-width: 450px;
+  width: 100%;
+  background: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  position: relative;
+  box-shadow: 0px 15px 35px rgba(20, 28, 52, 0.2);
+  box-sizing: border-box;
+}
+
+.container header {
+  font-size: 1.5rem;
+  color: #333;
+  font-weight: 500;
   text-align: center;
 }
 
-.form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.container .form {
+  margin-top: 30px;
+}
+
+.form .input_wrapper {
+  width: 100%;
   margin-top: 20px;
 }
 
-.formLabel {
-  margin: 10px 0;
-  font-weight: bold;
+.input_wrapper label {
+  color: #333;
+  font-weight: 500;
+  font-size: 1rem;
 }
 
-.formInput {
+.form .input_wrapper input {
   padding: 10px;
-  width: 100%;
+  width: 94%;
   border: 1px solid #ccc;
   border-radius: 5px;
   margin: 5px 0;
   transition: border 0.3s;
 }
 
-.formInput:focus {
+.form .input_wrapper input:focus {
   border: 1px solid #007bff;
 }
 
@@ -37,10 +62,40 @@
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
 }
 
 .submitButton:hover {
   background-color: #0056b3;
+}
+
+.clearButton {
+  padding: 10px 20px;
+  background-color: #c64125;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.clearButton:hover {
+  background-color: #882907;
 }
 
 .loader {
@@ -50,13 +105,14 @@
   width: 20px;
   height: 20px;
   animation: spin 2s linear infinite;
-  margin-left: 10px;
+  margin-left: 150px;
 }
 
 @keyframes spin {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
