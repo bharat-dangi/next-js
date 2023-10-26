@@ -33,7 +33,10 @@ const checkAddress = async (addressData: Address): Promise<Response> => {
 
     return { message: checkAddressValidity(apiResponse?.data, addressData) };
   } catch (error) {
-    throw new Error("Something went wrong");
+    throw new Error(
+      (error as any)?.response?.data?.error?.errorMessage ??
+        "Something went wrong"
+    );
   }
 };
 
