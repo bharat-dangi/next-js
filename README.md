@@ -25,4 +25,5 @@ PORT= <PORT_NUMBER>
 NEXT_PUBLIC_GRAPHQL_API= http://localhost:{YOUR_SERVER_PORT}/graphql
 ```
 * Then switch to node version 16 and run `npm i`
-* Then run command `npm run dev`
+* Then run command `npm run build`
+* Then run command `npm start`
