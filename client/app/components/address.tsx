@@ -22,7 +22,9 @@ export default function AddressForm() {
         <header>Address Validation Check Form</header>
         <form className={styles.form}>
           <div className={styles.input_wrapper}>
-            <label>Postal Code</label>
+            <label>
+              <span>*</span>Postal Code
+            </label>
             <input
               type="text"
               value={postcode}
@@ -31,7 +33,11 @@ export default function AddressForm() {
             />
           </div>
           <div className={styles.input_wrapper}>
-            <label>Suburb</label>
+            <label>
+              <span>*</span>
+              Suburb
+            </label>
+
             <input
               type="text"
               value={suburb}
@@ -40,7 +46,10 @@ export default function AddressForm() {
             />
           </div>
           <div className={styles.input_wrapper}>
-            <label> State</label>
+            <label>
+              <span>*</span> State
+            </label>
+
             <input
               type="text"
               value={state}

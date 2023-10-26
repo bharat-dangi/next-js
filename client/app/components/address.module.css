@@ -50,6 +50,11 @@
   transition: border 0.3s;
 }
 
+.input_wrapper label span {
+  color: #eb4e3d !important;
+  margin-left: 2px;
+}
+
 .form .input_wrapper input:focus {
   border: 1px solid #007bff;
 }
